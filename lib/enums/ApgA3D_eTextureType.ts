@@ -1,6 +1,6 @@
 /** ---------------------------------------------------------------------------
  * @module [ApgA3D]
- * @author [APG] Angeli Paolo Giusto
+ * @author [APG] ANGELI Paolo Giusto
  * @version 0.1 APG 20240214
  * @version 0.2 APG 20240323 Spostato nel suo file dedicato
  * ----------------------------------------------------------------------------

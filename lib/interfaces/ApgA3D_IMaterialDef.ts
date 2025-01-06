@@ -1,6 +1,6 @@
 /** ---------------------------------------------------------------------------
  * @module [BrdGlb]
- * @author [APG] Angeli Paolo Giusto
+ * @author [APG] ANGELI Paolo Giusto
  * @version 0.1 APG 20230707
  * @version 0.2 APG 20231115 Spostato nel suo file dedicato + Commenti e refactoring
  * @version 0.3 APG 20231227 Modulo BrdGlb server side

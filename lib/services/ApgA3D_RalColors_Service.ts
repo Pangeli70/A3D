@@ -1,6 +1,6 @@
 /** ---------------------------------------------------------------------------
  * @module [ApgA3D]
- * @author [APG] Angeli Paolo Giusto 
+ * @author [APG] ANGELI Paolo Giusto 
  * @version 0.1 APG 20230707
  * @version 0.2 APG 20231227 Modulo BrdBlm server side
  * ----------------------------------------------------------------------------
