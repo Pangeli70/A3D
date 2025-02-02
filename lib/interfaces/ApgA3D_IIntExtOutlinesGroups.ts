@@ -8,12 +8,16 @@
  * ----------------------------------------------------------------------------
  */
 
+
+import {  ApgA3D_IPoint2D} from "./ApgA3D_IPoint2D.ts";
+
+
+
 /**
- * Bidimensional point with x, y coordinates.
- * Used for extrusions both for profiles and paths on a plane.
- * 
+ * Groups of outlines for coupled meshes for multiple extrusions
  */
-export interface ApgA3D_IPoint2D {
-  x: number;
-  y: number;
+export interface ApgA3D_IIntExtOutlinesGroups {
+  int: ApgA3D_IPoint2D[][];
+  ext: ApgA3D_IPoint2D[][];
 }
+

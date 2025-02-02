@@ -2,13 +2,14 @@
  * @module [ApgA3D]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.1 APG 20231227
+ * @version 0.2 APG 20241209 Moved to A3D module
  * ----------------------------------------------------------------------------
  */
 
 
 /**
- * Tipi di operazioni per il posizionamento e l'orientamento dei componenti 
- * dei prodotti nello spazio tridimensionale
+ * Types of operations for the placement and orientation of the components 
+ * and meshes in the three-dimensional space.
  */
 export enum ApgA3D_ePlacementOperation {
 

@@ -2,31 +2,25 @@
  * @module [ApgA3D]
  * @author [APG] ANGELI Paolo Giusto 
  * @version 0.1 APG 20231114
- * @version 0.2 APG 20231226 Estratto nel suo proprio file
+ * @version 0.2 APG 20231226 In Its own file
+ * @version 0.2 APG 20241209 Moved to A3D module
  * ----------------------------------------------------------------------------
  */
 
-import {
-    ApgA3D_ePlacementOperation
-} from "../enums/ApgA3D_ePlacementOperation.ts";
-import {
-    ApgA3D_IPlacementOperation
-} from "../interfaces/ApgA3D_IPlacementOperation.ts";
+import { ApgA3D_ePlacementOperation } from "../enums/ApgA3D_ePlacementOperation.ts";
+import { ApgA3D_IPlacementOperation } from "../interfaces/ApgA3D_IPlacementOperation.ts";
+
+
+
 
 /**
- * Base per gli oggetti estrudibili e posizionabili.
+ * Base class for extrudable and positionable meshes.
  */
 export class ApgA3D_Extrudable {
 
 
-    /**
-     * Lunghezza dell'estruso prima dell'eventuale taglio
-     */
     length = 0;
 
-    /**
-     * Elenco delle operazioni di posizionamento ed orientamento
-     */
     placementOps: ApgA3D_IPlacementOperation[] = [];
 
 

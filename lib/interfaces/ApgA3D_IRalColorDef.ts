@@ -4,7 +4,7 @@
  * @version 0.1 APG 20230707
  * @version 0.2 APG 20231115 Moved to its own file
  * @version 0.3 APG 20231227 Moved server side
- * @version 0.4 APG 20241209 Moved to ApgA3D library
+ * @version 0.4 APG 20241209 Moved to A3D module
  * ----------------------------------------------------------------------------
  */
 

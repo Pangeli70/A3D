@@ -1,7 +1,8 @@
 /** ---------------------------------------------------------------------------
- * @module [BrdGlb]
+ * @module [ApgA3D]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.1 APG 20240225
+ * @version 0.2 APG 20241209 Moved to A3D module
  * ----------------------------------------------------------------------------
  */
 
@@ -10,33 +11,33 @@ import { ApgA3D_eTextureType } from "../enums/ApgA3D_eTextureType.ts";
 
 
 /**
- * Dati dell'asset (solitamente una texture) salvata remotamente in un Content Delivery Network (CDN)
+ * Asset data (usually a texture) saved remotely in a Content Delivery Network (CDN)
  */
 export interface ApgA3D_ICDNAsset {
 
   /**
-   * Identificatore del CDN Asset
+   * Identifier
    */
   CDNAssetId: string;
 
   /**
-   * Tipo della texture
+   * Texture type
    */
   type: ApgA3D_eTextureType;
 
   /**
-   * Percorso per l'asset locale da usare durante lo sviluppo in locale
+   * Local path for development
    */
   local: string;
 
   /**
-   * Url di riferimento per la pagina di caricamento o di riferimento dell'asset nel CDN remoto
+   * CDN management url page
    */
   remoteUrl_1?: string;
 
   /**
-   * Url remoto dell'asset nel CDN. Per la distribuzione in produzione su Deno Deploy 
-   * dovrebbe essere sempre definito e disponibile.
+   * Remote path to the asset in the CDN. 
+   * For distribution in production on Deno Deploy this should always be defined and available
    */
   remote_1?: string;
 }

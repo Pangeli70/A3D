@@ -1,6 +1,5 @@
 /** ---------------------------------------------------------------------------
- * @module [ApgEdr/lib]
- * @description Librerie del monorepo
+ * @module [ApgA3D]
  * @author [APG] ANGELI Paolo Giusto 
  * @version 0.1 APG 20240421
  * ----------------------------------------------------------------------------

@@ -1,104 +1,89 @@
 /** ---------------------------------------------------------------------------
- * @module [BrdGlb]
+ * @module [ApgA3D]
  * @author [APG] ANGELI Paolo Giusto
  * @version 0.1 APG 20230707
- * @version 0.2 APG 20231115 Spostato nel suo file dedicato + Commenti e refactoring
- * @version 0.3 APG 20231227 Modulo BrdGlb server side
- * @version 0.4 APG 20240225 Modulo BrdBlm server side
- * @version 0.5 APG 20240309 Id + Normal maps + Signature_V2
+ * @version 0.2 APG 20231115 Moved in its own file
+ * @version 0.3 APG 20231227 Module Glb server side
+ * @version 0.4 APG 20240225 Module Blm server side
+ * @version 0.5 APG 20240309 Id + Normal maps + other
+ * @version 0.6 APG 20241209 Moved to A3D module
  * ----------------------------------------------------------------------------
  */
 
 
-
-import {
-  ApgA3D_IAlbedoMapDef
-} from "./ApgA3D_IAlbedoMapDef.ts";
-import {
-  ApgA3D_IAlphaMapDef
-} from "./ApgA3D_IAlphaMapDef.ts";
-import {
-  ApgA3D_IBumpMapDef
-} from "./ApgA3D_IBumpMapDef.ts";
-import {
-  ApgA3D_INormalMapDef
-} from "./ApgA3D_INormalMapDef.ts";
+import { ApgA3D_IAlbedoMapDef } from "./ApgA3D_IAlbedoMapDef.ts";
+import { ApgA3D_IAlphaMapDef } from "./ApgA3D_IAlphaMapDef.ts";
+import { ApgA3D_IBumpMapDef } from "./ApgA3D_IBumpMapDef.ts";
+import { ApgA3D_INormalMapDef } from "./ApgA3D_INormalMapDef.ts";
 
 
 
 
 /**
- * Definizione del materiale per le mesh
+ * Mesh material definition
  */
 export interface ApgA3D_IMaterialDef {
 
 
   /**
-   * Identificatore della definizione del materiale
+   * Unique identifier
    */
   id: string;
 
   /**
-   * Nome in lingua del materiale
+   * Translated name of the material
    */
   name?: string;
 
   /**
-   * Colore base del materiale
+   * Base color
    */
   color: number;
 
   /**
-   * Colori accettabili e randomizzabili
+   * range of acceptable and randomizable colors
    */
-  colors?: number[];  //@V2
+  colors?: number[];  //@V0.5
 
   /**
-   * Riflettività del materiale
+   * Reflectivity of the material
    */
   roughness: number;
 
   /**
-   * Trasparenza base del materiale
+   * Transparency of the material
    */
   opacity?: number;
 
-  /**
-   * Il materiale ha una immagine ripetibile
-   */
+
   albedoMapDef?: ApgA3D_IAlbedoMapDef;
 
-  /**
-   * Il materiale ha una mappa di rugosità
-   */
+
   bumpMapDef?: ApgA3D_IBumpMapDef;
 
-  /**
-   * Il materiale ha una mappa delle normali in alternativa alla mappa di rugosità
-   */
-  normalMapDef?: ApgA3D_INormalMapDef; //@V2
+
+  normalMapDef?: ApgA3D_INormalMapDef; //@V0.5
+
+
+  alphaMapDef?: ApgA3D_IAlphaMapDef; //@V0.5
 
   /**
-   * Il materiale ha una mappa delle trasparenze
+   * All the maps have applied this additional global rotation in degrees.
+   * Values greater than zero generate an anti-clockwise rotation
    */
-  alphaMapDef?: ApgA3D_IAlphaMapDef; //@V2
+  textureRotationInDeg?: number; //@V0.5
 
   /**
-   * Le texture del materiale hanno una rotazione globale in gradi sessaggesimali. Valori positivi generano una rotazione antioraria 
+   * All the maps have applied this additional random rotation in degrees. 
+   * This setting is considered only if [textureRotationInDeg] is not defined
    */
-  textureRotationInDeg?: number; //@V2
+  hasRandomTextureRotation?: boolean; //@V0.5
 
   /**
-   * Le texture del materiale hanno una rotazione random. Questa impostazione
-   * viene considerata solo se la rotazione precedente non è definita
+   * The material definition has changed and so the real associated material 
+   * has to be updated
    */
-  hasRandomTextureRotation?: boolean; //@V2
-
-  /**
-   * La definizione del materiale è stata cambiata e quindi il materiale reale
-   * associato deve essere aggiornato
-   */
-  isUpdated?: boolean; //@V2
+  isDirty?: boolean; //@V0.5
 
 }
 

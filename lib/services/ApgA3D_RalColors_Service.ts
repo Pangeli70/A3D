@@ -2,36 +2,16 @@
  * @module [ApgA3D]
  * @author [APG] ANGELI Paolo Giusto 
  * @version 0.1 APG 20230707
- * @version 0.2 APG 20231227 Modulo BrdBlm server side
+ * @version 0.2 APG 20231227 Module Blm server side
+ * @version 0.3 APG 20241209 Moved to A3D module
  * ----------------------------------------------------------------------------
  */
 
-import {
-    ApgA3D_IRalColorDef
-} from "../interfaces/ApgA3D_IRalColorDef.ts";
+import { ApgA3D_IRalColorDef } from "../interfaces/ApgA3D_IRalColorDef.ts";
 
 
-export class ApgA3D_RalColors_Service {
-
-    private static _isInited = false;
-    private static _colors: Map<string, ApgA3D_IRalColorDef> = new Map();
-
-
-    static getColor(acolorName: string) {
-
-        if (!this._isInited) {
-            this.#init();
-        }
-        return this._colors.get(acolorName);
-    }
-
-
-
-    static #init() {
-
-        this._colors.clear();
-
-        const rawCsv = `RAL,RGB,HEX,CMYK,LRV,English,German,French,Spanish,Italian,Dutch
+const RAW_CSV = `
+RAL,RGB,HEX,CMYK,LRV,English,German,French,Spanish,Italian,Dutch
 RAL 1000,205-186-136,#CDBA88,0-9-34-20,51.79,Green beige,Grünbeige,Beige vert,Beige verdoso,Beige verdastro,Groenbeige
 RAL 1001,208-176-132,#D0B084,0-15-37-18,48.09,Beige,Beige,Beige,Beige,Beige,Beige
 RAL 1002,210-170-109,#D2AA6D,0-19-48-18,45.07,Sand yellow,Sandgelb,Jaune sable,Amarillo arena,Giallo sabbia,Zandgeel
@@ -247,11 +227,41 @@ RAL 9016,241-241-234,#F1F1EA,0-0-3-5,87.27,Traffic white,Verkehrsweiß,Blanc sig
 RAL 9017,41-41-42,#29292A,2-2-0-84,5.09,Traffic black,Verkehrsschwarz,Noir signalisation,Negro tráfico,Nero traffico,Verkeerszwart
 RAL 9018,200-203-196,#C8CBC4,1-0-3-20,60.77,Papyrus white,Papyrusweiß,Blanc papyrus,Blanco papiro,Bianco papiro,Papyruswit
 RAL 9022,133-133-131,#858583,0-0-2-48,35.40,Pearl light grey,Perlhellgrau,Gris clair nacré,Gris claro perlado,Grigio chiaro perlato,Parelmoerlichtgrijs
-RAL 9023,120-123-122,#787B7A,2-0-1-52,33.87,Pearl dark grey,Perldunkelgrau,Gris fonçé nacré,Gris oscuro perlado,Grigio scuro perlato,Parelmoerdonkergrijs`
+RAL 9023,120-123-122,#787B7A,2-0-1-52,33.87,Pearl dark grey,Perldunkelgrau,Gris fonçé nacré,Gris oscuro perlado,Grigio scuro perlato,Parelmoerdonkergrijs
+`
 
-        const rows = rawCsv.split("\n");
+
+/**
+ * Service for RAL colors definiions
+ */
+export class ApgA3D_RalColors_Service {
+
+    private static _isInited = false;
+    private static _colors: Map<string, ApgA3D_IRalColorDef> = new Map();
+
+
+    static getColor(acolorName: string) {
+
+        if (!this._isInited) {
+            this.#init();
+        }
+        return this._colors.get(acolorName);
+    }
+
+
+
+    static #init() {
+
+        this._colors.clear();
+
+        const rows = RAW_CSV.split("\n");
+
         for (const row of rows) {
+
+            if (row.trim() === "") continue;
+            
             const fragments = row.trim().split(",");
+
             const color: ApgA3D_IRalColorDef = {
                 code: fragments[0],
                 color: Number(fragments[2].replace("#", "0x")),
@@ -263,6 +273,7 @@ RAL 9023,120-123-122,#787B7A,2-0-1-52,33.87,Pearl dark grey,Perldunkelgrau,Gris 
                     DE: fragments[6]
                 }
             }
+
             this._colors.set(color.code, color);
         }
     }
